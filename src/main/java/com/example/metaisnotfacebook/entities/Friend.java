@@ -25,4 +25,10 @@ public class Friend {
 
     @Column(name = "Users_id", nullable = false)
     private int usersId;
+
+    public Friend(String email, String host, int usersId) {
+        this.email = email;
+        this.host = host;
+        this.usersId = usersId;
+    }
 }
