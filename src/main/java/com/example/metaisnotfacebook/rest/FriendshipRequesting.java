@@ -24,7 +24,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/response")
 public class FriendshipRequesting {
-    final String SERVER_B_API = "http://localhost:8080/api/friendship";
+//    final String SERVER_B_API = "http://localhost:8080/api/friendship";
 
     private FriendshipService friendshipService;
 
@@ -48,7 +48,7 @@ public class FriendshipRequesting {
             } else {
                 WebClient webClient = WebClient.builder()
                         .clientConnector(connector())
-                        .baseUrl(SERVER_B_API)
+                        .baseUrl(request.getRcpHost()+"/api/friendship")
                         .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                         .build();
 
