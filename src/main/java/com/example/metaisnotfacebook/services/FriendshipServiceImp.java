@@ -8,6 +8,7 @@ import com.example.metaisnotfacebook.repos.FriendRepo;
 import com.example.metaisnotfacebook.repos.FriendshipRepo;
 import com.example.metaisnotfacebook.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -143,6 +144,9 @@ public class FriendshipServiceImp implements FriendshipService {
         return friendshipProtocolResponse;
     }
 
+        @Value("#{environment.OUR_SERVER}")
+        private String this_social_media;
+
     @Override
     public FriendshipProtocolResponse receiveFriendshipRequest(FriendshipProtocolRequest friendshipProtocolRequest) {
         System.out.println("Version: "+friendshipProtocolRequest.getVersion());
@@ -152,7 +156,7 @@ public class FriendshipServiceImp implements FriendshipService {
         System.out.println("Receiver: "+friendshipProtocolRequest.getRecipient());
         System.out.println("Receiver Host: "+friendshipProtocolRequest.getRcpHost());
         FriendshipProtocolResponse friendshipProtocolResponse;
-        if (friendshipProtocolRequest.getRcpHost().equals("facebookIsNotMeta")) {
+        if (friendshipProtocolRequest.getRcpHost().equals(this_social_media)) {
             // this should be an interface to decide on whatever version different answer
             if (friendshipProtocolRequest.getVersion() == 1) {
                 // method check based on version?
