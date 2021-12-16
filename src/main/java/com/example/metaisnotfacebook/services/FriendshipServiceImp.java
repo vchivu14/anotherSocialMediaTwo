@@ -144,8 +144,8 @@ public class FriendshipServiceImp implements FriendshipService {
         return friendshipProtocolResponse;
     }
 
-        @Value("#{environment.OUR_SERVER}")
-        private String this_social_media;
+    @Value("#{environment.OUR_SERVER}")
+    private String this_social_media;
 
     @Override
     public FriendshipProtocolResponse receiveFriendshipRequest(FriendshipProtocolRequest friendshipProtocolRequest) {
@@ -156,6 +156,7 @@ public class FriendshipServiceImp implements FriendshipService {
         System.out.println("Receiver: "+friendshipProtocolRequest.getRecipient());
         System.out.println("Receiver Host: "+friendshipProtocolRequest.getRcpHost());
         FriendshipProtocolResponse friendshipProtocolResponse;
+        System.out.println(friendshipProtocolRequest.getRcpHost());
         if (friendshipProtocolRequest.getRcpHost().equals(this_social_media)) {
             // this should be an interface to decide on whatever version different answer
             if (friendshipProtocolRequest.getVersion() == 1) {
